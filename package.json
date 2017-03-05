@@ -1,7 +1,7 @@
 {
   "name": "mesaic-webpack",
   "version": "1.0.0",
-  "description": "Webpack config / build script used by Mesaic projects",
+  "description": "Webpack config blocks used by Mesaic projects",
   "main": "index.js",
   "author": "Mesaic",
   "license": "MIT",
