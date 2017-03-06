@@ -6,7 +6,7 @@ const createLessSVRLoader = require('./internal/createLessSVRLoader');
 
 module.exports = ({styles, production, cssFileName}) => (webpackConfig) => {
   const lessSVRLoader = createLessSVRLoader({styles});
-  const cssModulesOptions = '&localIdentName=[path][name]__[local]--[hash:base64:5]&sourceMap=true&importLoaders=2';
+  const cssModulesOptions = '&localIdentName=[local]__[hash:base32:5]&sourceMap=true&importLoaders=2';
   const wrapExtractTextStyle = (loaders) => ExtractTextPlugin.extract('style-loader', loaders, {publicPath: ''});
 
   const loader = {
