@@ -18,7 +18,7 @@ function customEval(code, styles) {
         src: ${srcs.join(',')};
         font-weight: ${font.weight};
       }
-    `;
+      `;
     }).join('\n');
     const style = (path, def) => _.get(styles, path, def);
     const withUnit = (value, unit) => (typeof value === 'number' || NUMBERS.test(value)) ? `${String(value)}${unit}` : value;
@@ -36,51 +36,51 @@ function customEval(code, styles) {
 }
 
 module.exports = ({styles, colors, StringReplacePlugin}) => {
-	return StringReplacePlugin.replace({
-		replacements: [
-			{
-				pattern: /\{\{(.*?)\}\}/g,
-				replacement: (match, content) => customEval(content, styles),
-			},
-			{
-				pattern: /%%([\w\.]+)%%/g, // eslint-disable-line
-				replacement(match, path) {
-					const value = _.get(styles, path, undefined);
+  return StringReplacePlugin.replace({
+    replacements: [
+      {
+      pattern: /\{\{(.*?)\}\}/g,
+      replacement: (match, content) => customEval(content, styles),
+    },
+    {
+      pattern: /%%([\w\.]+)%%/g, // eslint-disable-line
+      replacement(match, path) {
+        const value = _.get(styles, path, undefined);
 
-					if (value === undefined) {
-						const msg = `Cannot find variant replacement for %%${path}%% in ${this.resourcePath}. Styles: ${JSON.stringify(styles, null, 2)}`;
-						console.error(msg);
-						throw new Error(msg);
-					}
+        if (value === undefined) {
+          const msg = `Cannot find variant replacement for %%${path}%% in ${this.resourcePath}. Styles: ${JSON.stringify(styles, null, 2)}`;
+          console.error(msg);
+          throw new Error(msg);
+        }
 
-					return value;
-				},
-			},
-			{
-				pattern: /__LESS_COLORS__/g,
-				replacement() {
-					return Object.keys(colors).map((colorName) => {
-						const colorValue = colors[colorName];
-						return `@${colorName}: ${colorValue};`;
-					}).join('\n');
-				},
-			},
-			{
-				pattern: /__LESS_COLOR_GENERATORS__/g,
-				replacement() {
-					return Object.keys(colors).map((colorName) => {
-						return `.generate(color, ~"${colorName}");`;
-					}).join('\n');
-				},
-			},
-			{
-				pattern: /__LESS_BACKGROUND_COLOR_GENERATORS__/g,
-				replacement() {
-					return Object.keys(colors).map((colorName) => {
-						return `.generate(background-color, ~"${colorName}");`;
-					}).join('\n');
-				},
-			},
-		],
-	});
+        return value;
+      },
+    },
+    {
+      pattern: /__LESS_COLORS__/g,
+      replacement() {
+        return Object.keys(colors).map((colorName) => {
+          const colorValue = colors[colorName];
+          return `@${colorName}: ${colorValue};`;
+        }).join('\n');
+      },
+    },
+    {
+      pattern: /__LESS_COLOR_GENERATORS__/g,
+      replacement() {
+        return Object.keys(colors).map((colorName) => {
+          return `.generate(color, ~"${colorName}");`;
+        }).join('\n');
+      },
+    },
+    {
+      pattern: /__LESS_BACKGROUND_COLOR_GENERATORS__/g,
+      replacement() {
+        return Object.keys(colors).map((colorName) => {
+          return `.generate(background-color, ~"${colorName}");`;
+        }).join('\n');
+      },
+    },
+    ],
+  });
 }
