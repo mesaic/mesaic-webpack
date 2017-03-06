@@ -3,4 +3,4 @@ module.exports = () => (webpackConfig) => {
     test: /\.json$/,
     loader: 'json-loader',
   });
-}
+};

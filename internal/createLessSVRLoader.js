@@ -1,7 +1,7 @@
 const createSVRLoader = require('./createSVRLoader');
 
-module.exports = ({styles, StringReplacePlugin}) => {
-  const svrLoader = createSVRLoader({styles, colors: styles.colors, StringReplacePlugin});
+module.exports = ({styles}) => {
+  const svrLoader = createSVRLoader({styles, colors: styles.colors});
   return `less-loader?importLoader=${svrLoader}!${svrLoader}`;
-}
+};
 

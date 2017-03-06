@@ -8,4 +8,4 @@ module.exports = () => (webpackConfig) => {
       plugins: ['react-autoprefix', 'transform-runtime'],
     },
   });
-}
+};

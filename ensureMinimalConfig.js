@@ -13,4 +13,4 @@ module.exports = () => (webpackConfig) => {
   if (!webpackConfig || Object.keys(webpackConfig).length === 0) {
     Object.assign(webpackConfig, MINIMAL_CONFIG);
   }
-}
+};

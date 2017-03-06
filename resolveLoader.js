@@ -7,4 +7,4 @@ module.exports = () => (webpackConfig) => {
       path.join(process.cwd(), 'node_modules'),
     ],
   };
-}
+};

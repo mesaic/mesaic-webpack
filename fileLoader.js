@@ -6,4 +6,4 @@ module.exports = () => (webpackConfig) => {
       name: '[name]-[hash:6].[ext]',
     },
   });
-}
+};
