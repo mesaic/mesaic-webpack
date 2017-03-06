@@ -31,5 +31,8 @@
     "eslint_d": "^4.2.2",
     "husky": "^0.13.2",
     "pre-push-validate": "git+ssh://git@github.com/wish-technology/pre-push-validate#9829922"
+  },
+  "peerDependencies": {
+    "babel-preset-mesaic": "*"
   }
 }
