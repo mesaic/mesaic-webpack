@@ -20,7 +20,13 @@ function customEval(code, styles) {
       }
       `;
     }).join('\n');
-    const style = (path, def) => _.get(styles, path, def);
+    const style = (path: string, def?: any): * => {
+      const result = _.get(styles, path, def);
+      if (typeof result === 'undefined') {
+        throw new Error(`styles.${path} could not be found.`);
+      }
+      return result;
+    };
     const withUnit = (value, unit) => (typeof value === 'number' || NUMBERS.test(value)) ? `${String(value)}${unit}` : value;
     const px = (value) => withUnit(value, 'px');
     const percent = (value) => withUnit(value, '%');
