@@ -20,7 +20,7 @@ function customEval(code, styles) {
       }
       `;
     }).join('\n');
-    const style = (path: string, def?: any): * => {
+    const style = (path, def) => {
       const result = _.get(styles, path, def);
       if (typeof result === 'undefined') {
         throw new Error(`styles.${path} could not be found.`);
