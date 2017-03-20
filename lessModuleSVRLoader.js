@@ -4,8 +4,8 @@ const autoprefixer = require('autoprefixer');
 
 const createLessSVRLoader = require('./internal/createLessSVRLoader');
 
-module.exports = ({styles, production, cssFileName}) => (webpackConfig) => {
-  const lessSVRLoader = createLessSVRLoader({styles});
+module.exports = ({replacements, production, cssFileName}) => (webpackConfig) => {
+  const lessSVRLoader = createLessSVRLoader({replacements});
   const cssModulesOptions = '&localIdentName=[local]__[hash:base32:5]&sourceMap=true&importLoaders=2';
   const wrapExtractTextStyle = (loaders) => ExtractTextPlugin.extract('style-loader', loaders, {publicPath: ''});
 

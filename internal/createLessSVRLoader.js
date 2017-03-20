@@ -1,7 +1,7 @@
 const createSVRLoader = require('./createSVRLoader');
 
-module.exports = ({styles}) => {
-  const svrLoader = createSVRLoader({styles, colors: styles.colors});
+module.exports = ({replacements}) => {
+  const svrLoader = createSVRLoader({replacements});
   return `less-loader?importLoader=${svrLoader}!${svrLoader}`;
 };
 

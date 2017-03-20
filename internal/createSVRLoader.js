@@ -1,7 +1,7 @@
 const StringReplacePlugin = require('string-replace-webpack-plugin');
 
-module.exports = ({styles, colors, replacements}) => {
+module.exports = ({replacements}) => {
   return StringReplacePlugin.replace({
-    replacements: replacements({styles, colors}),
+    replacements,
   });
 };
