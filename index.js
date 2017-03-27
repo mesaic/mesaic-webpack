@@ -12,4 +12,5 @@ module.exports = {
   babelLoader: require('./babelLoader'),
   fileLoader: require('./fileLoader'),
   jsonLoader: require('./jsonLoader'),
+  urlLoader: require('./urlLoader'),
 };
