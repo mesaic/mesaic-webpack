@@ -26,6 +26,7 @@
     "webpack": "1.14.0"
   },
   "devDependencies": {
+    "babel-eslint": "^7.2.1",
     "eslint": "^3.17.0",
     "eslint-config-mesaic": "git+ssh://git@github.com/wish-technology/eslint-config-mesaic.git#master",
     "eslint_d": "^4.2.2",
