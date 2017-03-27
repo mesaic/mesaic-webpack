@@ -3,8 +3,8 @@ const querystring = require('querystring');
 const fileLoaderQuery = require('./fileLoader').query;
 const createSVRLoader = require('./internal/createSVRLoader');
 
-module.exports = (styles) => (webpackConfig) => {
-  const svrLoader = createSVRLoader({styles, colors: styles.colors});
+module.exports = ({replacements}) => (webpackConfig) => {
+  const svrLoader = createSVRLoader({replacements});
 
   webpackConfig.module.loaders.push({
     test: /\.svg$/,
