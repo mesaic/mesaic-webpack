@@ -28,10 +28,10 @@
   "devDependencies": {
     "babel-eslint": "^7.2.1",
     "eslint": "^3.17.0",
-    "eslint-config-mesaic": "git+ssh://git@github.com/mesaic/eslint-config-mesaic.git#master",
+    "eslint-config-mesaic": "git+ssh://git@github.com/mesaic/eslint-config-mesaic.git#3766c89",
     "eslint_d": "^4.2.2",
     "husky": "^0.13.2",
-    "pre-push-validate": "git+ssh://git@github.com/mesaic/pre-push-validate#9829922"
+    "pre-push-validate": "git+ssh://git@github.com/mesaic/pre-push-validate#6eeabed"
   },
   "peerDependencies": {
     "babel-preset-mesaic": "*"
