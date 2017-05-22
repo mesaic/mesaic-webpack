@@ -34,6 +34,6 @@
     "pre-push-validate": "git+ssh://git@github.com/mesaic/pre-push-validate#6eeabed"
   },
   "peerDependencies": {
-    "babel-preset-mesaic": "*"
+    "@mesaic/babel-preset-mesaic": "*"
   }
 }
