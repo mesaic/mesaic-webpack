@@ -1,18 +1,15 @@
 module.exports = ({production, server}) => (webpackConfig) => {
-  const babel = `babel-loader?cacheDirectory${!production || server ? '&compact=false' : ''}`;
+  const babel = {
+    loader: 'babel-loader',
+    options: {
+      cacheDirectory: true,
+      compact: !production || server ? 'false' : 'auto',
+    },
+  };
 
   webpackConfig.module.rules.push({
     test: /\.js$/,
     exclude: /node_modules(?!\/@mesaic)|(\.entry\.js?$)/,
-    loaders: server || production ? [babel] : ['react-hot-loader', babel],
+    use: server || production ? [babel] : ['react-hot-loader', babel],
   });
-
-  // webpackConfig.module.rules.push({
-  //   test: /\.js$/,
-  //   exclude: /node_modules(?!\/react-atomic)/,
-  //   loader: 'babel-loader',
-  //   query: {
-  //     presets: ['mesaic'],
-  //   },
-  // });
 };

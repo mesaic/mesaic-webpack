@@ -21,4 +21,14 @@ module.exports = {
 
   // Rules (were loaders)
   babelRule: require('./babelRule'),
+  entryRule: require('./entryRule'),
+  lessModuleRule: require('./lessModuleRule'),
+  lessRule: require('./lessRule'),
+  cssRule: require('./cssRule'),
+  fontRule: require('./fontRule'),
+  spriteRule: require('./spriteRule'),
+  svgRule: require('./svgRule'),
+  fileRule: require('./fileRule'),
+  rawRule: require('./rawRule'),
+  jisonRule: require('./jisonRule'),
 };
