@@ -1,7 +1,6 @@
-// @flow
 const autoprefixer = require('autoprefixer');
 
-module.exports = {
+module.exports = () => ({
   loader: 'postcss-loader',
   options: {
     plugins: () => [
@@ -10,4 +9,4 @@ module.exports = {
       }),
     ],
   },
-};
+});
