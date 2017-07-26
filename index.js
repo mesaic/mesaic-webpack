@@ -6,11 +6,4 @@ module.exports = {
 
   extensions: require('./extensions'),
   devtool: require('./devtool'),
-
-  // Loaders
-  lessModuleSVRLoader: require('./lessModuleSVRLoader'),
-  babelLoader: require('./babelLoader'),
-  fileLoader: require('./fileLoader'),
-  jsonLoader: require('./jsonLoader'),
-  urlLoader: require('./urlLoader'),
 };
