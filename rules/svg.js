@@ -1,10 +1,14 @@
-const urlLoaderConfig = require('../loaderConfigs/url-loader');
-
 module.exports = ({styleVariablesReplacementLoader}) => ({
   test: /\.svg$/,
   exclude: /\.sprite\.svg$/,
   use: [
-    urlLoaderConfig(),
+    {
+      loader: 'url-loader',
+      options: {
+        limit: 10000,
+        name: '[name]-[hash:6].[ext]',
+      },
+    },
     styleVariablesReplacementLoader,
   ],
 });

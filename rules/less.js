@@ -1,15 +1,28 @@
-const cssLoaderConfig = require('../loaderConfigs/css-loader');
-const lessLoaderConfig = require('../loaderConfigs/less-loader');
 const postCSSLoaderConfig = require('../loaderConfigs/postcss-loader');
 const wrapExtractTextStyle = require('../utils/wrapExtractTextStyle');
 
-module.exports = ({production, styleVariablesReplacementLoader, modules = true}) => ({
-  test: modules ? /\.(less|less\.module)$/ : /\.less\.vanilla$/,
-  exclude: /node_modules\/bootstrap/,
-  use: wrapExtractTextStyle([
-    cssLoaderConfig({production, modules}),
-    postCSSLoaderConfig(),
-    lessLoaderConfig({importLoader: styleVariablesReplacementLoader}),
-    styleVariablesReplacementLoader,
-  ]),
-});
+module.exports = ({production, styleVariablesReplacementLoader}) => {
+  const cssLoaderOptions = {
+    modules: true,
+    importLoaders: 1,
+  };
+
+  if (!production) {
+    cssLoaderOptions.localIdentName = '[local]_[hash:base36:5]';
+  }
+
+  return {
+    test: /\.(?:less|less\.module)$/,
+    use: wrapExtractTextStyle([
+      {
+        loader: 'css-loader',
+        options: cssLoaderOptions,
+      },
+      postCSSLoaderConfig(),
+      {
+        loader: 'less-loader',
+      },
+      styleVariablesReplacementLoader,
+    ]),
+  };
+};

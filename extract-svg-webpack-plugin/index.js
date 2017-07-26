@@ -39,10 +39,10 @@ ExtractSvgPlugin.prototype.extract = function extract(options) {
 
   return [
     {
-      loader: 'mesaic-svg-plugin/injectLoader',
+      loader: require.resolve('./injectLoader'),
     },
     {
-      loader: 'mesaic-svg-plugin/loader',
+      loader: require.resolve('./loader'),
     },
     ...before,
   ];
