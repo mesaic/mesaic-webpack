@@ -8,5 +8,6 @@ module.exports = {
   devtool: require('./devtool'),
 
   babelRule: require('./babelRule'),
+  fileRule: require('./fileRule'),
   styleRules: require('./styleRules'),
 };

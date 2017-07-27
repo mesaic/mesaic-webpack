@@ -30,7 +30,9 @@ module.exports = ({cssFileName, production, replacements, publicPath = ''}) => (
 
   const lessLoader = {
     loader: 'less-loader',
-    sourceMap: !production,
+    options: {
+      sourceMap: !production,
+    },
   };
 
   const stringReplaceLoader = StringReplacePlugin.replace({
