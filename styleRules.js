@@ -11,7 +11,7 @@ module.exports = ({cssFileName, production, replacements, publicPath = ''}) => (
     loader: 'css-loader',
     options: {
       modules: true,
-      importLoaders: 1,
+      importLoaders: 2,
       localIdentName: production ? '[hash:base64]' : '[local]__[hash:base32:5]',
       sourceMap: !production,
     },
@@ -25,6 +25,7 @@ module.exports = ({cssFileName, production, replacements, publicPath = ''}) => (
           browsers: ['> 5%', 'last 3 iOS versions', 'last 2 versions'],
         }),
       ],
+      sourceMap: !production,
     },
   };
 
@@ -42,8 +43,8 @@ module.exports = ({cssFileName, production, replacements, publicPath = ''}) => (
   const wrapExtractTextStyle = (use) =>
     ExtractTextPlugin.extract({
       fallback: 'style-loader',
-      use,
       publicPath,
+      use,
     });
 
   webpackConfig.module.rules.push({
@@ -59,7 +60,7 @@ module.exports = ({cssFileName, production, replacements, publicPath = ''}) => (
 
   webpackConfig.module.rules.push({
     test: /\.css$/,
-    use: wrapExtractTextStyle([cssLoader]),
+    use: wrapExtractTextStyle([{loader: 'css-loader'}]),
   });
 
   webpackConfig.plugins.push(new StringReplacePlugin());
