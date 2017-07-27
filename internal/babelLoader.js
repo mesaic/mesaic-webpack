@@ -1,8 +1,8 @@
-module.exports = ({production, server}) => ({
+module.exports = ({compact = 'auto'}) => ({
   loader: 'babel-loader',
   options: {
     cacheDirectory: true,
-    compact: !production || server ? 'false' : 'auto',
+    compact,
     babelrc: false,
     presets: ['@mesaic/babel-preset-mesaic'],
   },

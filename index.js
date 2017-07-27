@@ -6,4 +6,7 @@ module.exports = {
 
   extensions: require('./extensions'),
   devtool: require('./devtool'),
+
+  babelRule: require('./babelRule'),
+  styleRules: require('./styleRules'),
 };
