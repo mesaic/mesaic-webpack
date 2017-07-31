@@ -7,7 +7,12 @@ module.exports = {
   extensions: require('./extensions'),
   devtool: require('./devtool'),
 
+  // Rules
   babelRule: require('./babelRule'),
+  entrypointRule: require('./entrypointRule'),
   fileRule: require('./fileRule'),
+  jisonRule: require('./jisonRule'),
+  rawRule: require('./rawRule'),
   styleRules: require('./styleRules'),
+  svgRules: require('./svgRules'),
 };

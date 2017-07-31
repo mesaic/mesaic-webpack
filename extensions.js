@@ -1,3 +1,5 @@
 module.exports = (additionalExtensions) => (webpackConfig) => {
-  webpackConfig.resolve.extensions = ['.js', '.svg', '.css', '.less', '.less.vars', '.json'].concat(additionalExtensions || []);
+  webpackConfig.resolve.extensions = ['.js', '.json', '.css', '.less', '.less.vars', '.svg'].concat(
+    additionalExtensions || [],
+  );
 };

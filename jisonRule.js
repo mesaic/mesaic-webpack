@@ -1,4 +1,4 @@
-module.exports = ({production}) => {
+module.exports = ({hot}) => (webpackConfig) => {
   const loaders = [
     {
       loader: 'babel-loader',
@@ -11,12 +11,12 @@ module.exports = ({production}) => {
     },
   ];
 
-  if (!production) {
+  if (!hot) {
     loaders.unshift({loader: 'react-hot-loader'});
   }
 
-  return {
+  webpackConfig.module.rules.push({
     test: /\.jison$/,
     use: loaders,
-  };
+  });
 };
