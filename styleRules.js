@@ -2,7 +2,13 @@ const autoprefixer = require('autoprefixer');
 const ExtractTextPlugin = require('extract-text-webpack-plugin');
 const StringReplacePlugin = require('string-replace-webpack-plugin');
 
-module.exports = ({cssFileName, production, replacements, publicPath = ''}) => (webpackConfig) => {
+module.exports = ({
+  cssFileName,
+  extract = false,
+  production,
+  publicPath = '',
+  replacements,
+}) => (webpackConfig) => {
   if (!Array.isArray(replacements)) {
     throw new Error('Needs a `replacements` array.');
   }
@@ -67,6 +73,6 @@ module.exports = ({cssFileName, production, replacements, publicPath = ''}) => (
   webpackConfig.plugins.push(new ExtractTextPlugin({
     filename: cssFileName || '[name]-[contenthash].css',
     allChunks: true,
-    disable: !production,
+    disable: !extract,
   }));
 };
