@@ -1,5 +1,4 @@
+/* eslint-disable */
 module.exports = (additionalExtensions) => (webpackConfig) => {
-  webpackConfig.resolve.extensions = ['.js', '.json', '.css', '.less', '.less.vars', '.svg'].concat(
-    additionalExtensions || [] // eslint-disable-line comma-dangle
-  );
+  webpackConfig.resolve.extensions = (additionalExtensions || []).concat(['.js', '.json', '.css', '.less', '.less.vars', '.svg'])
 };
