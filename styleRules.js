@@ -13,12 +13,20 @@ module.exports = ({
     throw new Error('Needs a `replacements` array.');
   }
 
-  const cssLoader = {
+  const cssModuleLoader = {
     loader: 'css-loader',
     options: {
       modules: true,
       importLoaders: 1,
       localIdentName: production ? '[hash:base64]' : '[local]__[hash:base32:5]',
+      sourceMap: !production,
+    },
+  };
+
+  const cssRawLoader = {
+    loader: 'css-loader',
+    options: {
+      importLoaders: 1,
       sourceMap: !production,
     },
   };
@@ -55,7 +63,7 @@ module.exports = ({
 
   webpackConfig.module.rules.push({
     test: /\.less$/,
-    use: wrapExtractTextStyle([cssLoader, postCSSLoader, lessLoader, stringReplaceLoader]),
+    use: wrapExtractTextStyle([cssModuleLoader, postCSSLoader, lessLoader, stringReplaceLoader]),
   });
 
   webpackConfig.module.rules.push({
@@ -66,12 +74,12 @@ module.exports = ({
 
   webpackConfig.module.rules.push({
     test: /\.less\.raw$/,
-    use: wrapExtractTextStyle([cssLoader, postCSSLoader, lessLoader]),
+    use: wrapExtractTextStyle([cssRawLoader, postCSSLoader, lessLoader]),
   });
 
   webpackConfig.module.rules.push({
     test: /\.css$/,
-    use: wrapExtractTextStyle([{loader: 'css-loader'}]),
+    use: wrapExtractTextStyle([cssRawLoader, postCSSLoader]),
   });
 
   webpackConfig.plugins.push(new StringReplacePlugin());
