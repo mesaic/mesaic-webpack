@@ -17,7 +17,7 @@ module.exports = ({
     loader: 'css-loader',
     options: {
       modules: true,
-      importLoaders: 2,
+      importLoaders: 1,
       localIdentName: production ? '[hash:base64]' : '[local]__[hash:base32:5]',
       sourceMap: !production,
     },
@@ -62,6 +62,11 @@ module.exports = ({
     test: /\.less\.vars$/,
     issuer: /\.less$/,
     use: [stringReplaceLoader],
+  });
+
+  webpackConfig.module.rules.push({
+    test: /\.less\.raw$/,
+    use: wrapExtractTextStyle([cssLoader, postCSSLoader, lessLoader]),
   });
 
   webpackConfig.module.rules.push({
