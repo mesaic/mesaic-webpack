@@ -1,6 +1,6 @@
 {
-  "name": "mesaic-webpack",
-  "version": "1.0.0",
+  "name": "@mesaic/mesaic-webpack",
+  "version": "0.0.0",
   "description": "Webpack config blocks used by Mesaic projects",
   "main": "index.js",
   "author": "Mesaic",
@@ -35,16 +35,19 @@
     "webpack-validator": "^3.0.0"
   },
   "devDependencies": {
+    "@mesaic/eslint-config-mesaic": "^0.1.0",
+    "@mesaic/pre-push-validate": "^0.1.0",
     "babel-core": "^6.2.5",
     "babel-eslint": "^7.2.1",
     "eslint": "^3.19.0",
-    "eslint-config-mesaic": "git+ssh://git@github.com/mesaic/eslint-config-mesaic.git#master",
     "eslint_d": "^5.0.0",
-    "husky": "^0.14.3",
-    "pre-push-validate": "git+ssh://git@github.com/mesaic/pre-push-validate#6eeabed"
+    "husky": "^0.14.3"
   },
   "peerDependencies": {
     "@mesaic/babel-preset-mesaic": "*",
     "webpack": "^3.3.0"
+  },
+  "publishConfig": {
+    "access": "public"
   }
 }
