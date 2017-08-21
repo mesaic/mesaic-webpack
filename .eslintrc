@@ -1,5 +1,5 @@
 {
-  "extends": "./node_modules/eslint-config-mesaic/index.js",
+  "extends": "./node_modules/@mesaic/eslint-config-mesaic/index.js",
   "rules": {
     "flowtype/require-valid-file-annotation": 0,
     "flowtype/require-return-type": 0,
