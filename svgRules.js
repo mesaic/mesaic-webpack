@@ -2,7 +2,7 @@ const StringReplacePlugin = require('string-replace-webpack-plugin');
 
 const ExtractSvgPlugin = require('./extract-svg-webpack-plugin');
 
-module.exports = ({replacements, iconReplacer, noPlugin = false}) => (webpackConfig) => {
+module.exports = ({replacements, iconReplacer, plugin = true, inject = false}) => (webpackConfig) => {
   const stringReplaceLoader = StringReplacePlugin.replace({
     replacements,
   });
@@ -10,7 +10,7 @@ module.exports = ({replacements, iconReplacer, noPlugin = false}) => (webpackCon
   webpackConfig.module.rules.push({
     test: /\.sprite\.svg$/,
     use: ExtractSvgPlugin.extract({
-      noPlugin,
+      inject,
       before: [
         {
           loader: stringReplaceLoader,
@@ -34,7 +34,7 @@ module.exports = ({replacements, iconReplacer, noPlugin = false}) => (webpackCon
     ],
   });
 
-  if (!noPlugin) {
+  if (plugin) {
     webpackConfig.plugins.push(new ExtractSvgPlugin({iconReplacer}));
   }
 };
