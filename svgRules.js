@@ -10,6 +10,7 @@ module.exports = ({replacements, iconReplacer, noPlugin = false}) => (webpackCon
   webpackConfig.module.rules.push({
     test: /\.sprite\.svg$/,
     use: ExtractSvgPlugin.extract({
+      noPlugin,
       before: [
         {
           loader: stringReplaceLoader,

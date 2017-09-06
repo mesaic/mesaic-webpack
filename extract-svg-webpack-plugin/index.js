@@ -37,10 +37,15 @@ ExtractSvgPlugin.prototype.extract = function extract(options) {
     before = [before];
   }
 
-  return [
-    {
+  let injectLoader = [];
+  if (!options.noPlugin) {
+    injectLoader.push({
       loader: require.resolve('./injectLoader'),
-    },
+    });
+  }
+
+  return [
+    ...injectLoader,
     {
       loader: require.resolve('./loader'),
     },
