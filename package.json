@@ -1,6 +1,6 @@
 {
   "name": "@mesaic/mesaic-webpack",
-  "version": "0.1.1",
+  "version": "0.1.2",
   "description": "Webpack config blocks used by Mesaic projects",
   "main": "index.js",
   "author": "Mesaic",
